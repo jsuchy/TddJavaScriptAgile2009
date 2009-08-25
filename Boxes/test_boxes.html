@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <title>Test boxes</title>
+    <link href="../JsSimpleUnit/JsSimpleUnit.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../JsSimpleUnit/JsSimpleUnit.js"></script>
+    <script type="text/javascript" src="script/boxes.js"></script>
+  </head>
+  <body>
+    <h2>Boxes Test Suite</h2>
+  </body>
+  
+  <script type="text/javascript">
+    // box 1-3
+    test({
+      initialColorIsGreen: function() {
+        test.assertEquals("blue", boxes.color);
+      },
+      changesColorFromGreen: function() {
+        boxes.color = "blue";
+        var element = document.createElement("div");
+        
+        boxes.changeColor(element);
+        
+        test.assertEquals("red", element.style.backgroundColor);
+      },
+      changesColorFromRed: function() {
+        boxes.color = "red";
+        var element = document.createElement("div");
+
+        boxes.changeColor(element);
+
+        test.assertEquals("blue", element.style.backgroundColor);
+      },
+    });
+  </script>
+</html>

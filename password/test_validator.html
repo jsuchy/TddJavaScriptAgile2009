@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Test Password Validator</title>
+    <link href="../JsSimpleUnit/JsSimpleUnit.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../JsSimpleUnit/JsSimpleUnit.js"></script>
+    <script type="text/javascript" src="script/password.js"></script>
+  </head>
+  <body>
+    <h2>Password Validator Test Suite</h2>
+  </body>
+  
+  <script type="text/javascript">
+    test({
+      updatesInputForInvalidPassword: function() {
+        var input = document.createElement("input");
+        
+        // Mock the password
+        password = {
+          isValid: function() {
+            return false;
+          }
+        }
+        
+        password_validator.validate(input);
+        
+        test.assertEquals("password_invalid", input.className);
+      },
+      validatesValidPassword: function() {
+        var input = document.createElement("input");
+        
+        password = {
+          isValid: function() {
+            return true;
+          }
+        }
+        
+        password_validator.validate(input);
+        
+        test.assertEquals("password_valid", input.className);
+      },
+    });
+  </script>
+</html>
